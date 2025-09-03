@@ -60,10 +60,19 @@ def _get_requirements(
 ):
     requirements = set()
     local_addons = set()
+    self_addon = False
+    if addons_dir == "self":
+        addons_dir = ".."
+        self_addon = True
+        
     for addon_name in os.listdir(addons_dir):
+        if self_addon and addon_name != os.path.basename(os.getcwd()):
+            continue
+        
         addon_dir = os.path.join(addons_dir, addon_name)
         if not is_installable_addon(addon_dir):
             continue
+        
         # TODO this is a hack and we should run proper metadata preparation instead,
         #      using build.utils.project_wheel_metadata()
         overrides = get_metadata_overrides(addons_dir, addon_name)
