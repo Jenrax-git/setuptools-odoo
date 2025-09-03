@@ -129,7 +129,12 @@ def make_default_setup_addon(addon_setup_dir, addon_dir, force, odoo_version_ove
 
 
 def make_default_setup_addons_dir(addons_dir, force, odoo_version_override):
-    addons_setup_dir = os.path.join(addons_dir, "setup")
+    self_addon = False
+    if addons_dir == "self":
+        addons_dir = ".."
+        self_addon = True
+
+    addons_setup_dir = os.path.join(addons_dir if not self_addon else ".", "setup")
     if not os.path.exists(addons_setup_dir):
         os.mkdir(addons_setup_dir)
     readme_path = os.path.join(addons_setup_dir, "README")
@@ -142,6 +147,8 @@ def make_default_setup_addons_dir(addons_dir, force, odoo_version_override):
             f.write(IGNORE)
     ignore = _load_ignore_file(ignore_path)
     for addon_name in os.listdir(addons_dir):
+        if self_addon and addon_name != os.path.basename(os.getcwd()):
+            continue
         if addon_name in ignore:
             continue
         addon_dir = os.path.join(addons_dir, addon_name)
