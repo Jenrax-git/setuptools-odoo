@@ -129,6 +129,40 @@ ODOO_VERSION_INFO = {
         "universal_wheel": False,
         "git_postversion_strategy": STRATEGY_DOT_N,
     },
+        "17.0": {
+        "odoo_dep": "odoo>=17.0a,<17.1dev",
+        "base_addons": base_addons.odoo17,
+        "pkg_name_pfx": "odoo-addon",
+        "pkg_version_specifier": ">=17.0dev,<17.1dev",
+        "addons_ns": "odoo.addons",
+        "namespace_packages": None,
+        "python_requires": ">=3.10",
+        "universal_wheel": False,
+        "git_postversion_strategy": STRATEGY_DOT_N,
+    },
+    "18.0": {
+        "odoo_dep": "odoo>=18.0a,<18.1dev",
+        "base_addons": base_addons.odoo18,
+        "pkg_name_pfx": "odoo-addon",
+        "pkg_version_specifier": ">=18.0dev,<18.1dev",
+        "addons_ns": "odoo.addons",
+        "namespace_packages": None,
+        "python_requires": ">=3.10",
+        "universal_wheel": False,
+        "git_postversion_strategy": STRATEGY_DOT_N,
+    },
+    "19.0": {
+        "odoo_dep": "odoo>=19.0a,<19.1dev",
+        "base_addons": base_addons.odoo19 if hasattr(base_addons, 'odoo19') else base_addons.odoo18,
+        "pkg_name_pfx": "odoo-addon",
+        "pkg_version_specifier": ">=19.0dev,<19.1dev",
+        "addons_ns": "odoo.addons",
+        "namespace_packages": None,
+        "python_requires": ">=3.10",
+        "universal_wheel": False,
+        "git_postversion_strategy": STRATEGY_DOT_N,
+    },
+
 }
 
 
