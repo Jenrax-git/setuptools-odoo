@@ -41,3 +41,26 @@ repos:
   - id: isort
     name: isort except __init__.py
     exclude: /__init__\.py$
+
+# Local hooks to run setuptools-odoo helpers with the local source (supports Odoo 19.0)
+- repo: local
+  hooks:
+  - id: setuptools-odoo-make-default
+    name: Generate default setup.py for an addons directory
+    language: python
+    entry: setuptools-odoo-make-default
+    args: ["--addons-dir=.", "--clean"]
+    pass_filenames: false
+    additional_dependencies:
+      - file:///Users/admin/trabajo/odoo19/setuptools-odoo
+      - setuptools<81
+  - id: setuptools-odoo-get-requirements
+    name: Generate requirements.txt for an addons directory
+    language: python
+    entry: setuptools-odoo-get-requirements
+    args: ["--output=requirements.txt"]
+    pass_filenames: false
+    files: (__manifest__\.py|__openerp__\.py|__terp__\.py|setup\.py)$
+    additional_dependencies:
+      - file:///Users/admin/trabajo/odoo19/setuptools-odoo
+      - setuptools<81

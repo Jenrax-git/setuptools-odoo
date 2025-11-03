@@ -11,6 +11,9 @@ from manifestoo_core.odoo_series import OdooEdition
 
 SERIES = [
     # branch,  enterprise, target
+    ("19.0", True, "19"),
+    ("18.0", True, "18"),
+    ("17.0", True, "17"),
     ("16.0", True, "16"),
     ("15.0", True, "15"),
     ("14.0", True, "14"),
