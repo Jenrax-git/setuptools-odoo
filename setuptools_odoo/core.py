@@ -153,7 +153,7 @@ ODOO_VERSION_INFO = {
     },
     "19.0": {
         "odoo_dep": "odoo>=19.0a,<19.1dev",
-        "base_addons": base_addons.odoo19 if hasattr(base_addons, 'odoo19') else base_addons.odoo18,
+        "base_addons": base_addons.odoo19,
         "pkg_name_pfx": "odoo-addon",
         "pkg_version_specifier": ">=19.0dev,<19.1dev",
         "addons_ns": "odoo.addons",
